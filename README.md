@@ -1,2 +1,2 @@
 # HackUTA2024
-by Raul Salas,Sky
+by Raul Salas,Sky, Wade Lewis
