@@ -9,5 +9,3 @@ app.permanent_session_lifetime = timedelta(minutes=5)
 @app.route('/')
 def home():
     return render_template('HTML.html')
-if __name__ == "__main__":
-    app.run(debug=True)
