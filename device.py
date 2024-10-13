@@ -10,14 +10,6 @@ encoder = None  # pin_a and pin_b are used
 button = None
 buzzer = None
 
-def initialize_gpio():
-    global encoder, button, buzzer
-    if encoder is None and button is None and buzzer is None:
-        encoder = RotaryEncoder(a=17, b=18, max_steps=0)
-        button = Button(27)
-        buzzer = TonalBuzzer(15)
-        encoder.when_rotated = rotary_moved
-        button.when_pressed = button_pressed
 
 position = 0
 
@@ -77,6 +69,15 @@ def button_pressed():
 # encoder.when_rotated = rotary_moved
 # button.when_pressed = button_pressed
 
+def initialize_gpio():
+    global encoder, button, buzzer
+    if encoder is None and button is None and buzzer is None:
+        encoder = RotaryEncoder(a=17, b=18, max_steps=0)
+        button = Button(27)
+        buzzer = TonalBuzzer(15)
+        encoder.when_rotated = rotary_moved
+        button.when_pressed = button_pressed
+        
 def alert():
     melody = ["C4", "D4", "C4", "D4", "C4", "D4"]
 
