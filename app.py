@@ -3,7 +3,9 @@ from datetime import timedelta
 from flask_socketio import SocketIO, send
 import device
 
-app = Flask(__name__)
+app = Flask(__name__, 
+    static_folder='BASE HTML'
+    )
 
 # Initialize Flask-SocketIO
 socketio = SocketIO(app)
