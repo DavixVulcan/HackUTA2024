@@ -57,6 +57,7 @@ def rotary_moved():
 
     print(f"bloodpressure: {bloodpressure}")
     print(f"heartrate: {heartrate}")
+    print(f"bloocoxy: {bloodoxy}")
 
 # Function to handle button press
 def button_pressed():
@@ -74,7 +75,7 @@ def initialize_gpio():
     global encoder, button, buzzer
     if encoder is None and button is None and buzzer is None:
         encoder = RotaryEncoder(a=17, b=18, max_steps=0)
-        button = Button(27)
+        button = Button(27, bounce_time=0.1)
         buzzer = TonalBuzzer(15)
         encoder.when_rotated = rotary_moved
         button.when_pressed = button_pressed
