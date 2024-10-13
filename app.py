@@ -28,7 +28,7 @@ def handle_stream(message):
 
 @app.route('/')
 def home():
-    return render_template('test.html')
+    return render_template('index.html')
 
 @app.route('/login')
 def login():
