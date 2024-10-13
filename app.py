@@ -37,10 +37,6 @@ def home():
 def login():
     return render_template('Status.html')
 
-if __name__ == "__main__":
-    socketio.run(app, host='0.0.0.0', port=5000, debug=True)
-
-
 @app.before_first_request
 def main_looper():
     device.initialize_gpio()
@@ -50,4 +46,9 @@ def main_looper():
     thread2.start()
     thread3 = Thread(target=bloodoxy_mon)
     thread3.start()
+    
+if __name__ == "__main__":
+    socketio.run(app, host='0.0.0.0', port=5000, debug=True)
+
+
 ##EDITING BACKEND
