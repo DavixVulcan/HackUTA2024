@@ -49,3 +49,4 @@ def slowdown():
 if __name__ == "__main__":
     init_car()
     sio.connect('http://localhost:5000')
+    pause()
