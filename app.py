@@ -3,12 +3,17 @@ from datetime import timedelta
 import socketio
 
 sio = socketio.server()
-app = sockettio.WSGIApp(sio)
+app = sockettio.WSGIApp(sio, static_file={ '/': './public/'
+})
+
 @sio.event
-def connect ():
-    pass
+def connect(sid, environ):
+    print(sid, 'connected')
 
-
+@sio.event
+def disconnect(sid):
+    print(sid, 'disconnected')
+    
 app = Flask(__name__)
 app.permanent_session_lifetime = timedelta(minutes=5)
 
