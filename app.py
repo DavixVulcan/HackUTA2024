@@ -21,6 +21,12 @@ def handle_message(message):
     messagesplit = message.split(':')
     socketio.emit('alert', {'datatype':f'{messagesplit[0]}', 'data': f'{messagesplit[1]}'})
 
+@socketio.on('stream')
+def handle_stream(message):
+    print(f"Received message: {message}")
+    messagesplit = message.split(':')
+    socketio.emit('stream', {'datatype':f'{messagesplit[0]}', 'data': f'{messagesplit[1]}'})
+
 @app.route('/')
 def home():
     return render_template('test.html')

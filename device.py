@@ -102,6 +102,9 @@ def disconnect():
 def send_message_to_server(message):
     sio.emit('message', message)
 
+def send_stream_to_server(message):
+    sio.emit('stream', message)
+
 if __name__ == "__main__":
     initialize_gpio()
     alert()
@@ -109,10 +112,14 @@ if __name__ == "__main__":
     while True:
         if get_heartrate() > 100:
             send_message_to_server(f'Heartrate: {get_heartrate()}')
+            alert()
         
         if get_bloodpressure() > 120:
             send_message_to_server(f'Bloodpressure: {get_bloodpressure()}')
+            alert()
         
         if get_bloodoxygen() < 90:
             send_message_to_server(f'Bloodoxygen: {get_bloodoxygen()}')
-        sleep(.1)
+            alert()
+        sleep(.5)
+        send_stream_to_server(f'Heartrate: {get_heartrate()}, Bloodpressure: {get_bloodpressure()}, Bloodoxygen: {get_bloodoxygen()}')
