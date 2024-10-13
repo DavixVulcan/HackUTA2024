@@ -24,8 +24,7 @@ def handle_message(message):
 @socketio.on('stream')
 def handle_stream(message):
     print(f"Received message: {message}")
-    messagesplit = message.split(':')
-    socketio.emit('stream', {'datatype':f'{messagesplit[0]}', 'data': f'{messagesplit[1]}'})
+    socketio.emit('stream', {'datatype': message})
 
 @app.route('/')
 def home():
