@@ -11,6 +11,7 @@ position = 0
 
 # Function to handle the rotary encoder's movement
 def rotary_moved():
+    global position
     if encoder.steps > position:
         print("Rotated Right (Clockwise)")
     else:
