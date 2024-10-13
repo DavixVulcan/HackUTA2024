@@ -7,7 +7,7 @@ PIN_DT = 18   # Connect to rotary encoder B pin (DT)
 PIN_SW = 27   # Optional, connect to push button pin (SW)
 
 # Initialize GPIO mode
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARDs)
 
 # Set up pins as input with pull-up resistors
 GPIO.setup(PIN_CLK, GPIO.IN, pull_up_down=GPIO.PUD_UP)
