@@ -18,6 +18,7 @@ def rotary_moved():
     global position
     global bloodpressure
     global heartrate
+    global bloodtrue
     additive = 0
     if encoder.steps < position:
         print("Rotated Right (Clockwise)")
