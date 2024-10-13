@@ -33,7 +33,7 @@
 
                 // Listen for messages from the server
                 socket.on('stream', function (data) {
-                    console.log(data)
+                    console.log(data) 
                     var parsed_data = JSON.parse(data)
                     var messagesDiv = document.getElementById('messages');
                     // messagesDiv.innerHTML += '<p>' + data.datatype + ': ' + data.data + '</p>';
