@@ -25,11 +25,11 @@ def handle_message(message):
 @socketio.on('stream')
 def handle_stream(message):
     print(f"Received message: {message}")
-    socketio.emit('stream', json.loads(message))
+    socketio.emit('stream', message)
 
 @app.route('/')
 def home():
-    return render_template('test.html')
+    return render_template('index.html')
 
 @app.route('/login')
 def login():

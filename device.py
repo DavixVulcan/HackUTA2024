@@ -123,4 +123,4 @@ if __name__ == "__main__":
             send_message_to_server(f'Bloodoxygen: {get_bloodoxygen()}')
             alert()
         sleep(.5)
-        send_stream_to_server(f'Heartrate: {get_heartrate()}, Bloodpressure: {get_bloodpressure()}, Bloodoxygen: {get_bloodoxygen()}')
+        send_stream_to_server(f"{{\"Heartrate\": {get_heartrate()}, \"Bloodpressure\": {get_bloodpressure()}, \"Bloodoxygen\": {get_bloodoxygen()}}}")

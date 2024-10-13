@@ -1,0 +1,875 @@
+<!--
+    References: https://templatemo.com/, 
+-->
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>NeuroSafe</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+                        
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/bootstrap-icons.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/templatemo-topic-listing.css') }}" rel="stylesheet">
+
+        <!-- <link href="css/templatemo-topic-listing.css" rel="stylesheet">    -->
+        
+            <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
+            <script type="text/javascript">
+                // Connect to the WebSocket server
+                var socket = io();
+
+                // Listen for messages from the server
+                socket.on('stream', function (data) {
+                    console.log(data)
+                    var parsed_data = JSON.parse(data)
+                    var messagesDiv = document.getElementById('messages');
+                    // messagesDiv.innerHTML += '<p>' + data.datatype + ': ' + data.data + '</p>';
+                    document.getElementById("hr").value = parsed_data.Heartrate;
+                    document.getElementById("bp").value = parsed_data.Bloodpressure;
+                    document.getElementById("bol").value = parsed_data.Bloodoxygen;
+                    
+                });
+            </script>
+
+    </head>
+    
+    <body id="top">
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <i class="bi-back"></i>
+                        <span>NeuroSafe</span>
+                    </a>
+
+                    <div class="d-lg-none ms-auto me-4">
+                        <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                    </div>
+    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_1">NueroSafe</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_2">HealthSafe</a>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_3">AutoSafe</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_4">MobileSafe</a>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_5">Emergency Contact</a>
+                            </li>
+<!--
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="topics-listing.html">Topics Listing</a></li>
+
+                                    <li><a class="dropdown-item" href="contact.html">Contact Form</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+-->
+                        <div class="d-none d-lg-block">
+                            <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+
+            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <h1 class="text-white text-center">NeuroSafe</h1>
+
+                            <h6 class="text-center">"slogan here"</h6>
+
+                            <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text bi-search" id="basic-addon1">
+                                        
+                                    </span>
+
+                                    <input name="keyword" type="search" class="form-control" id="keyword" placeholder="Search Here" aria-label="Search">
+
+                                    <button type="submit" class="form-control">Search</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="featured-section">
+                <div class="container">
+                    <div class="row justify-content-center">
+
+                        <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                            <div class="custom-block bg-white shadow-lg">
+                                    <div class="d-flex">
+                                        <div>
+                                            <h5 class="mb-2">Heart Rate</h5>
+
+                                            <!DOCTYPE html>
+                                            <html lang="en">
+                                            
+                                            <head>
+                                                <meta charset="UTF-8">
+                                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                                <title>BPM-text-box</title>
+                                            </head>
+                                            
+                                            <body>
+                                                <form>
+                                                    <label for="bpm">BPM: </label>
+                                                    <input type="text" id="bpm" name="bpm" value="">
+                                                </form>
+                                                <script type="text/javascript">
+                                                    // document.getElementById("bpm").value = get_heartrate();
+                                                </script>
+                                            </body>
+                                            
+                                            </html>
+
+
+                                            <p class="mb-0">
+                                                October 12, 2024
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+                                    <img src="{{ url_for('static', filename='images/topics/Heart_BPM.png') }}"class="fit" alt="">
+                                    
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                            <div class="custom-block custom-block-overlay">
+                                <div class="d-flex flex-column h-100">
+                                    <img src="{{ url_for('static', filename='images/businesswoman-using-tablet-analysis.jpg') }}" class="custom-block-image img-fluid" alt="">
+
+                                    <div class="custom-block-overlay-text d-flex">
+                                        <div>
+                                            <h5 class="text-white mb-2">Today's Summary</h5>
+                                            <p class="text-white">
+                                            Heart Rate
+                                            <form>
+                                                <input type="text" id="hr" name="hr" value="">
+                                            </form>
+                                            </p>
+                                            
+                                            <p class="text-white">
+                                            Blood Pressure
+                                            <form>
+                                                <input type="text" id="bp" name="bp" value="">
+                                            </form>
+                                            <script type="text/javascript">
+                                                // document.getElementById("bp").value = get_bloodpressure();
+                                            </script>
+                                            </p>
+                                            
+                                            <p class="text-white">
+                                            Weight
+                                            <form>
+                                                <input type="text" id="weight" name="weight" value="136">
+                                                 lbs
+                                            </form>
+                                            </p>
+                                            <br>
+                                        </div>
+
+                                    </div>
+                                    <div class="social-share d-flex">
+                                    </div>
+                                    <div class="section-overlay"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="explore-section section-padding" id="section_2">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12 text-center">
+                            <h2 class="mb-4">HealthSafe</h1>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Heart Rate</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-tab-pane" type="button" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">Blood/Oxygen</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Blood Pressure</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="music-tab" data-bs-toggle="tab" data-bs-target="#music-tab-pane" type="button" role="tab" aria-controls="music-tab-pane" aria-selected="false">Light Sensory</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education-tab-pane" type="button" role="tab" aria-controls="education-tab-pane" aria-selected="false">Sound Sensory</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="design-tab-pane" role="tabpanel" aria-labelledby="design-tab" tabindex="0">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Heart Rate/Rhythm</h5>
+
+                                                            <p class="mb-0">
+                                                            Tachycardia: A faster than normal heart rate (above 100 bpm).
+                                                            <br>
+<!--                                                        Bradycardia: A slower than normal heart rate (below 60 bpm).
+                                                            <br>
+                                                            Tachycardia: A faster than normal heart rate (above 100 bpm).
+                                                            <br>
+                                                            Sinus Rhythm: The normal regular rhythm of the heart.
+                                                            <br>
+                                                            Arrhythmia:</p>
+-->                                                     </div>
+
+                                                    </div>
+
+                                                    <img src="{{ url_for('static', filename='images/topics/undraw_Remote_design_team_re_urdx.png') }}" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Targeted Heart Rate</h5>
+
+                                                                <p class="mb-0">
+                                                                    BPM: 60-170 
+                                                                    <i><u>Edit</u></i>
+                                                                </p>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <img src="{{ url_for('static', filename='images/topics/undraw_Redesign_feedback_re_jvm0.png') }}" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 col-12">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Heart Rate History</h5>
+
+                                                                <p class="mb-0">View Heart Rate History</p>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <img src="{{ url_for('static', filename='images/topics/colleagues-working-cozy-office-medium-shot.png') }}" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="marketing-tab-pane" role="tabpanel" aria-labelledby="marketing-tab" tabindex="0">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
+                                                <div class="custom-block bg-white shadow-lg">
+                                                        <div class="d-flex">
+                                                            <div>
+                                                                <h5 class="mb-2">Blood/Oxygen Levels</h5>
+
+                                                                <p class="mb-0" class="text-white">
+                                                                    Blood Oxygen Level:
+                                                                    <form>
+                                                                        <input type="text" id="bol" name="bol" value="">
+                                                                    </form>
+                                                                    <script type="text/javascript">
+                                                                        //document.getElementById("bol").value = get_bloodoxygen();
+                                                                    </script>
+                                                                    Hypoxemia: Low levels of oxygen in the blood.
+<!--                                                                    <b>
+                                                                    Normal: Normal levels of oxygen in the blood.
+                                                                    <b>
+                                                                    Hyperoxia: Excessively high levels of oxygen in the blood.
+-->                                                                </p>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <img src="{{ url_for('static', filename='images/topics/undraw_online_ad_re_ol62.png') }}" class="custom-block-image img-fluid" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
+                                                <div class="custom-block bg-white shadow-lg">
+                                                        <div class="d-flex">
+                                                            <div>
+                                                                <h5 class="mb-2"> Arterial Blood Gas</h5>
+
+                                                                <p class="mb-0">
+                                                                    <b><u>ABG</u></b>
+                                                                    <br>
+                                                                    pH: 7.17
+                                                                    <br>
+                                                                    PCO2: 62.3
+                                                                    <br>
+                                                                    PO2: 314.0
+                                                                    <br>
+                                                                    HCO3: 22.1
+                                                                    <br>
+                                                                    O2 sat: 90%
+                                                                    <br>
+                                                                    FiO2: 100%
+                                                                </p>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <img src="{{ url_for('static', filename='images/topics/undraw_Group_video_re_btu7.png') }}" class="custom-block-image img-fluid" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-6 col-12">
+                                                <div class="custom-block bg-white shadow-lg">
+                                                        <div class="d-flex">
+                                                            <div>
+                                                                <h5 class="mb-2">Targeted Arterial Blood Gas</h5>
+
+                                                                <p class="mb-0">
+                                                                        <i><u>Edit Target Here</u></i> 
+                                                                </p>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <img src="{{ url_for('static', filename='images/topics/undraw_viral_tweet_gndb.png') }}" class="custom-block-image img-fluid" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                  </div>
+
+                                <div class="tab-pane fade" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0">   <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Blood Pressure</h5>
+
+                                                            <p class="text-black" class="mb-0">
+                                                                Blood Pressure:
+                                                                <form>
+                                                                    <input type="text" id="bp" name="bp" value="">
+                                                                </form>
+                                                                <script type="text/javascript">
+                                                                    document.getElementById("bp").value = get_bloodpressure();
+                                                                </script>
+                                                            </p>
+                                                        </div>
+
+                                                    </div>
+                                                    
+                                                    <img src="{{ url_for('static', filename='images/topics/undraw_Finance_re_gnv2.png') }}" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+<!--                                        <div class="col-lg-6 col-md-6 col-12">
+                                            <div class="custom-block custom-block-overlay">
+                                                <div class="d-flex flex-column h-100">
+                                                    <img src="images/businesswoman-using-tablet-analysis-graph-company-finance-strategy-statistics-success-concept-planning-future-office-room.jpg" class="custom-block-image img-fluid" alt="">
+
+                                                    <div class="custom-block-overlay-text d-flex">
+                                                        <div>
+                                                            <h5 class="text-white mb-2">Bloop Pressure</h5>
+
+                                                            <p class="text-white">
+                                                                Your sodium level is within the normal range, which is great news. 
+                                                                This means your body is maintaining a healthy balance
+                                                                of fluids and electrolytes.
+                                                            </p>
+
+                                                        </div>
+
+                                                    </div>
+-->
+                                                    <div class="social-share d-flex">
+                                                        <p class="text-white me-4">Emergency Contacts: </p>
+
+                                                        <ul class="social-icon">
+                                                            <li class="social-icon-item">
+                                                                <a href="#" class="social-icon-link bi-twitter"></a>
+                                                            </li>
+
+                                                            <li class="social-icon-item">
+                                                                <a href="#" class="social-icon-link bi-facebook"></a>
+                                                            </li>
+
+                                                            <li class="social-icon-item">
+                                                                <a href="#" class="social-icon-link bi-pinterest"></a>
+                                                            </li>
+                                                        </ul>
+
+                                                        <a href="#" class="custom-icon bi-bookmark ms-auto"></a>
+                                                    </div>
+
+                                                    <div class="section-overlay"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="music-tab-pane" role="tabpanel" aria-labelledby="music-tab" tabindex="0">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Light Sensory</h5>
+
+                                                            <p class="mb-0">Lighting Environment: Safe</p>
+                                                        </div>
+
+                                                    </div>
+                                                    
+                                                    <img src="{{ url_for('static', filename='images/topics/undraw_Compose_music_re_wpiw.png') }}" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Settings</h5>
+
+                                                            <p class="mb-0"><i><u>Edit Light Sensory Settings</u></i></p>
+                                                        </div>
+
+                                                    </div>
+                                                    
+                                                    <img src="{{ url_for('static', filename='images/topics/undraw_happy_music_g6wc.png') }}" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+<!--
+                                        <div class="col-lg-4 col-md-6 col-12">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Podcast</h5>
+
+                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <img src="images/topics/undraw_Podcast_audience_re_4i5q.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+-->                                     </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="education-tab-pane" role="tabpanel" aria-labelledby="education-tab" tabindex="0">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-3">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Sound Sensory</h5>
+
+                                                            <p class="mb-0">Sound Environment: Safe</p>
+                                                        </div>
+
+                                                    </div>
+                                                    
+                                                    <img src="{{ url_for('static', filename='images/topics/undraw_Graduation_re_gthn.png') }}" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-12">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Settings</h5>
+
+                                                            <p class="mb-0"><i><u>Edit Sound Sensory Settings</u></i></p>
+                                                        </div>
+
+                                                    </div>
+                                                    
+                                                    <img src="{{ url_for('static', filename='images/topics/undraw_Educator_re_ju47.png') }}" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="timeline-section section-padding" id="section_3">
+                <div class="section-overlay"></div>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12 text-center">
+                            <h2 class="text-white mb-4">AutoSafe</h1>
+                        </div>
+
+                        <div class="col-lg-10 col-12 mx-auto">
+                            <div class="timeline-container">
+                                <ul class="vertical-scrollable-timeline" id="vertical-scrollable-timeline">
+                                    <div class="list-progress">
+                                        <div class="inner"></div>
+                                    </div>
+
+                                    <li>
+                                        <h4 class="text-white mb-3">Tesla</h4>
+
+                                        <p class="text-white">Our innovative health detection and monitoring app will be seamlessly integrated into Tesla vehicles, enhancing the driving experience by prioritizing passenger well-being. Utilizing advanced sensors and real-time data analysis, the app will monitor vital health metrics such as heart rate and stress levels. Alerts will notify drivers of any concerning changes, promoting safer driving habits. Additionally, the app will leverage Tesla's robust infotainment system to provide personalized health recommendations, making it an essential companion for every journey while reinforcing Tesla's commitment to cutting-edge technology and passenger safety.</p>
+
+                                        <div class="icon-holder">
+                                          <i class="bi-search"></i>
+                                        </div>
+                                    </li>
+                                    
+                                    <li>
+                                        <h4 class="text-white mb-3">Apple &amp; Samsung</h4>
+
+                                        <p class="text-white">Our app will be integrated with Apple and Samsung devices to monitor critical health metrics, including blood pressure levels. By leveraging advanced sensor technology, the app will provide real-time alerts for high health concerns and notify users of low blood pressure incidents. This proactive approach empowers individuals to manage their health effectively, ensuring timely intervention when necessary. With seamless compatibility across popular devices, our app enhances overall well-being and peace of mind.</p>
+
+                                        <div class="icon-holder">
+                                          <i class="bi-bookmark"></i>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <h4 class="text-white mb-3">Google Nest &amp; Alexa</h4>
+
+                                        <p class="text-white">Our app will prioritize health monitoring and patient information management, providing real-time updates in emergency situations. Integrated with Alexa and Google Nest devices, it ensures quick access to critical data for first responders, including fire department personnel, medics, and police. In the event of an emergency, the app can facilitate immediate communication and intervention, enhancing the safety and well-being of users. This seamless connectivity empowers individuals to receive timely assistance when they need it most.</p>
+
+                                        <div class="icon-holder">
+                                          <i class="bi-book"></i>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 text-center mt-5">
+                            <p class="text-white">
+                                Want to learn more?
+                                <a href="#" class="btn custom-btn custom-border-btn ms-3">Check out Youtube</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="faq-section section-padding" id="section_4">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12">
+                            <h2 class="mb-4">MobileSafe</h2>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="col-lg-5 col-12">
+                            
+                            <img src="{{ url_for('static', filename='images/faq_graphic.jpg') }}" class="img-fluid" alt="FAQs">
+                        </div>
+                        <div class="col-lg-6 col-12 m-auto">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Setup
+                                        </button>
+                                    </h2>
+
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            
+                                            <img src="{{ url_for('static', filename='images/topics/rickroll.webp') }}" class="fit" alt=""> <b>Scan to download</b>
+                                            <br>
+                                            Get the app
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        How it Works
+                                    </button>
+                                    </h2>
+
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Our app will be integrated into vehicles to function like a sophisticated car alarm system, but with an emphasis on health and safety. In emergency situations, the app’s AI will take control of the vehicle, allowing it to navigate safely while prioritizing the driver's health. It will monitor vital signs and send real-time alerts, ensuring that assistance is on the way while the vehicle is in motion. This innovative integration empowers users with both automated driving capabilities and essential health monitoring, providing a seamless blend of safety and convenience on the road.
+
+                                        </div>
+                                    </div>
+                                </div>
+
+<!--                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Its FREE
+                                    </button>
+                                    </h2>
+
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+-->                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="contact-section section-padding section-bg" id="section_5">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12 text-center">
+                            <h2 class="mb-5">Emergency Contact</h2>
+                        </div>
+
+                        <div class="col-lg-5 col-12 mb-4 mb-lg-0">
+                            <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.065641062665!2d-122.4230416990949!3d37.80335401520422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858127459fabad%3A0x808ba520e5e9edb7!2sFrancisco%20Park!5e1!3m2!1sen!2sth!4v1684340239744!5m2!1sen!2sth" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-12 mb-3 mb-lg- mb-md-0 ms-auto">
+                            <h4 class="mb-3">Current Location</h4>
+
+                            <p>Bay St &amp;, Larkin St, San Francisco, CA 94109, United States</p>
+
+                            <hr>
+
+                            <p class="d-flex align-items-center mb-1">
+                                <span class="me-2">Phone</span>
+
+                                <a href="tel: 305-240-9671" class="site-footer-link">
+                                    305-240-9671
+                                </a>
+                            </p>
+
+                            <p class="d-flex align-items-center">
+                                <span class="me-2">Email</span>
+
+                                <a href="mailto:info@company.com" class="site-footer-link">
+                                    username@mail.com
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-12 mx-auto">
+                            <h4 class="mb-3">Emergency Contacts</h4>
+
+<!--                            <p>Burj Park, Downtown Dubai, United Arab Emirates</p>-->
+
+                            <hr>
+
+                            <p class="d-flex align-items-center mb-1">
+                                <span class="me-2">Juan T.</span>
+                                
+                                <a href="tel: 305-443-7656" class="site-footer-link">
+                                    +1 (305)443-7656
+                                </a>
+                            </p>
+
+                            <p class="d-flex align-items-center">
+                                <span class="me-2">Sandra K.</span>
+
+                                <a href="tel: 305-240-7743" class="site-footer-link">
+                                    +1 (305)240-7743
+                                </a>
+                            </p>
+                            <p class="d-flex align-items-center">
+                                <span class="me-2">Raul S.</span>
+                            
+                                <a href="tel: 305-443-0982" class="site-footer-link">
+                                    +1 (305)443-0982
+                                </a>
+                            </p>
+                            <p class="d-flex align-items-center">
+                                <span class="me-2">Wade L.</span>
+                            
+                                <a href="tel: 305-240-6376" class="site-footer-link">
+                                    +1 (305)240-6376
+                                </a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+<footer class="site-footer section-padding">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-12 mb-4 pb-2">
+                        <a class="navbar-brand mb-2" href="index.html">
+                            <i class="bi-back"></i>
+                            <span>NeuroSafe</span>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-6">
+                        <h6 class="site-footer-title mb-3">Resources</h6>
+
+                        <ul class="site-footer-links">
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Home</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">How it works</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">FAQs</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+                        <h6 class="site-footer-title mb-3">Information</h6>
+
+                        <p class="text-white d-flex mb-1">
+                            <a href="tel: 305-240-9671" class="site-footer-link">
+                                305-240-9671
+                            </a>
+                        </p>
+
+                        <p class="text-white d-flex">
+                            <a href="mailto:info@company.com" class="site-footer-link">
+                                username@mail.com
+                            </a>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            English</button>
+
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" type="button">Thai</button></li>
+
+                                <li><button class="dropdown-item" type="button">Myanmar</button></li>
+
+                                <li><button class="dropdown-item" type="button">Arabic</button></li>
+                            </ul>
+                        </div>
+
+                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2024 NeuroSafe. All rights reserved.                        
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- JAVASCRIPT FILES -->
+        <!-- <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/click-scroll.js"></script>
+        <script src="js/custom.js"></script> -->
+
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/click-scroll.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+
+    </body>
+</html>
