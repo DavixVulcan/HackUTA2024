@@ -12,15 +12,29 @@ buzzer = TonalBuzzer(15)
 
 position = 0
 
-bloodtrue = True
-heartrate = 100
-bloodpressure = 100
+bloodtrue = 0
+heartrate = 80
+bloodpressure = 115
+bloodoxy = 97
+
+def get_heartrate():
+    global heartrate
+    return heartrate
+
+def get_bloodpressure():
+    global bloodpressure
+    return bloodpressure
+
+def get_bloodoxygen():
+    global bloodoxy
+    return bloodoxy
 
 # Function to handle the rotary encoder's movement
 def rotary_moved():
     global position
     global bloodpressure
     global heartrate
+    global bloodoxy
     global bloodtrue
     additive = 0
     if encoder.steps < position:
@@ -32,10 +46,12 @@ def rotary_moved():
     position = encoder.steps
     print(f"Position: {encoder.steps}")
 
-    if bloodtrue:
+    if bloodtrue == 0:
         bloodpressure += additive
-    else:
+    elif bloodtrue == 1:
         heartrate += additive
+    else:
+        bloodoxy += additive
 
     print(f"bloodpressure: {bloodpressure}")
     print(f"heartrate: {heartrate}")
@@ -44,19 +60,21 @@ def rotary_moved():
 def button_pressed():
     print("Button pressed!")
     global bloodtrue
-    bloodtrue = not bloodtrue
+    bloodtrue += 1
+    if bloodtrue == 3:
+        bloodtrue = 0
 
 # Assign event handlers for movement and button press
 encoder.when_rotated = rotary_moved
 button.when_pressed = button_pressed
 
+def alert():
+    melody = ["C4", "D4", "C4", "D4", "C4", "D4"]
 
-melody = ["C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5"]
-
-for note in melody:
-    buzzer.play(Tone(note))  # Play each note in the melody
-    sleep(0.5)  # Hold the note for half a second
-    buzzer.stop()
-    sleep(0.1) 
+    for note in melody:
+        buzzer.play(Tone(note))  # Play each note in the melody
+        sleep(0.05)  # Hold the note for half a second
+        buzzer.stop()
+        sleep(0.01) 
 # Keep the program running
 pause()
