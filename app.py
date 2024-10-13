@@ -13,18 +13,21 @@ def heartrate_mon():
         if device.get_heartrate() > 100:
             device.alert()
             socketio.emit('alert', {'datatype': 'heartrate', 'data':str(device.get_heartrate())}, broadcast=True)
+            time.sleep(1)
 
 def bloodpressure_mon():
     while True:
         if device.get_bloodpressure() > 120:
             device.alert()
             socketio.emit('alert', {'datatype': 'bloodpressure', 'data':str(device.get_bloodpressure())}, broadcast=True)
+            time.sleep(1)
 
 def bloodoxy_mon():
     while True:
         if device.get_bloodoxygen() < 90:
             device.alert()
             socketio.emit('alert', {'datatype': 'bloodoxy', 'data':str(device.get_bloodoxygen())}, broadcast=True)
+            time.sleep(1)
 
 @app.route('/')
 def home():
