@@ -2,6 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request, session
 from datetime import timedelta
 from flask_socketio import SocketIO, send
 import device
+import json
 
 app = Flask(__name__)
 
@@ -24,7 +25,7 @@ def handle_message(message):
 @socketio.on('stream')
 def handle_stream(message):
     print(f"Received message: {message}")
-    socketio.emit('stream', {'datatype': message})
+    socketio.emit('stream', json.loads(message))
 
 @app.route('/')
 def home():
