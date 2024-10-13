@@ -74,8 +74,8 @@ def button_pressed():
         bloodtrue = 0
 
 # Assign event handlers for movement and button press
-encoder.when_rotated = rotary_moved
-button.when_pressed = button_pressed
+# encoder.when_rotated = rotary_moved
+# button.when_pressed = button_pressed
 
 def alert():
     melody = ["C4", "D4", "C4", "D4", "C4", "D4"]
