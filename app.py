@@ -4,10 +4,7 @@ from flask_socketio import SocketIO, send
 import device
 import json
 
-app = Flask(__name__,
-    template_folder='BASE HTML',
-    static_folder='BASE HTML'
-    )
+app = Flask(__name__)
 
 # Initialize Flask-SocketIO
 socketio = SocketIO(app)
