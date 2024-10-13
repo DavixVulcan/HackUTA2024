@@ -5,7 +5,8 @@ import device
 import json
 
 app = Flask(__name__,
-    template_folder='BASE HTML'
+    template_folder='BASE HTML',
+    static_folder='BASE HTML'
     )
 
 # Initialize Flask-SocketIO
