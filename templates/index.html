@@ -24,7 +24,7 @@
         <link href="{{ url_for('static', filename='css/bootstrap-icons.css') }}" rel="stylesheet">
         <link href="{{ url_for('static', filename='css/templatemo-topic-listing.css') }}" rel="stylesheet">
 
-        <link href="css/templatemo-topic-listing.css" rel="stylesheet">   
+        <!-- <link href="css/templatemo-topic-listing.css" rel="stylesheet">    -->
         
             <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
             <script type="text/javascript">
@@ -172,7 +172,9 @@
 
                                     </div>
 
-                                    <img src="images/topics/Heart_BPM.png"class="fit" alt="">
+                                    <!-- <img src="images/topics/Heart_BPM.png"class="fit" alt=""> -->
+                                    <img src="{{ url_for('static', filename='images/topics/Heart_BPM.png') }}"class="fit" alt="">
+                                    
                                 </a>
                             </div>
                         </div>
@@ -180,7 +182,8 @@
                         <div class="col-lg-6 col-12">
                             <div class="custom-block custom-block-overlay">
                                 <div class="d-flex flex-column h-100">
-                                    <img src="images/businesswoman-using-tablet-analysis.jpg" class="custom-block-image img-fluid" alt="">
+                                    <!-- <img src="images/businesswoman-using-tablet-analysis.jpg" class="custom-block-image img-fluid" alt=""> -->
+                                    <img src="{{ url_for('static', filename='images/businesswoman-using-tablet-analysis.jpg') }}" class="custom-block-image img-fluid" alt="">
 
                                     <div class="custom-block-overlay-text d-flex">
                                         <div>
@@ -856,11 +859,17 @@
 
 
         <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
+        <!-- <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/jquery.sticky.js"></script>
         <script src="js/click-scroll.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="js/custom.js"></script> -->
+
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/click-scroll.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
 
     </body>
 </html>
