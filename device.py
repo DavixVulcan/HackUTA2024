@@ -2,6 +2,7 @@ from gpiozero import RotaryEncoder, Button, TonalBuzzer
 from gpiozero.tones import Tone
 from time import sleep
 from signal import pause
+import socketio
 
 # Set up the rotary encoder
 encoder = None  # pin_a and pin_b are used
@@ -86,8 +87,32 @@ def alert():
         sleep(0.05)  # Hold the note for half a second
         buzzer.stop()
         sleep(0.01) 
+# Set up a client for WebSocket communication
+sio = socketio.Client()
+
+@sio.event
+def connect():
+    print('Connected to server!')
+
+@sio.event
+def disconnect():
+    print('Disconnected from server.')
+
+# Function to send a message via WebSocket
+def send_message_to_server(message):
+    sio.emit('message', message)
 
 if __name__ == "__main__":
     initialize_gpio()
     alert()
-    pause()
+    sio.connect('http://localhost:5000')
+    while True:
+        if get_heartrate() > 100:
+            send_message_to_server(f'Heartrate: {get_heartrate()}')
+        
+        if get_bloodpressure() > 120:
+            send_message_to_server(f'Bloodpressure: {get_bloodpressure()}')
+        
+        if get_bloodoxygen() < 90:
+            send_message_to_server(f'Bloodoxygen: {get_bloodoxygen()}')
+        sleep(.1)
