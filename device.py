@@ -2,7 +2,7 @@ from gpiozero import RotaryEncoder, Button
 from signal import pause
 
 # Set up the rotary encoder
-encoder = RotaryEncoder(pin_a=17, pin_b=18, max_steps=0)  # pin_a and pin_b are used
+encoder = RotaryEncoder(a=17, b=18, max_steps=0)  # pin_a and pin_b are used
 
 # Optional: Set up the push button if your encoder has one
 button = Button(27)
