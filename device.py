@@ -77,7 +77,7 @@ def initialize_gpio():
         buzzer = TonalBuzzer(15)
         encoder.when_rotated = rotary_moved
         button.when_pressed = button_pressed
-        
+
 def alert():
     melody = ["C4", "D4", "C4", "D4", "C4", "D4"]
 
@@ -86,3 +86,6 @@ def alert():
         sleep(0.05)  # Hold the note for half a second
         buzzer.stop()
         sleep(0.01) 
+
+if __name__ == "__main__":
+    initialize_gpio()
