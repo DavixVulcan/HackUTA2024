@@ -1,4 +1,6 @@
-from gpiozero import RotaryEncoder, Button
+from gpiozero import RotaryEncoder, Button, TonalBuzzer
+from gpiozero.tones import Tone
+from time import sleep
 from signal import pause
 
 # Set up the rotary encoder
@@ -6,6 +8,7 @@ encoder = RotaryEncoder(a=17, b=18, max_steps=0)  # pin_a and pin_b are used
 
 # Optional: Set up the push button if your encoder has one
 button = Button(27)
+buzzer = TonalBuzzer(15)
 
 position = 0
 
@@ -47,5 +50,13 @@ def button_pressed():
 encoder.when_rotated = rotary_moved
 button.when_pressed = button_pressed
 
+
+melody = ["C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5"]
+
+for note in melody:
+    buzzer.play(Tone(note))  # Play each note in the melody
+    sleep(0.5)  # Hold the note for half a second
+    buzzer.stop()
+    sleep(0.1) 
 # Keep the program running
 pause()
