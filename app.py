@@ -5,13 +5,7 @@ app = Flask(__name__)
 app.secret_key = "Hello"
 app.permanent_session_lifetime = timedelta(minutes=5)
 
+
 @app.route('/')
 def home():
-    return render_template('home.html')
-
-@app.route('/login')
-def login():
-    return render_template('Status.html')
-
-if __name__ == "__main__":
-    app.run(debug=True)
+    return render_template('index.html')
