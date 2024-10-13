@@ -19,7 +19,7 @@ def heartrate_mon():
 def handle_message(message):
     print(f"Received message: {message}")
     messagesplit = message.split(':')
-    emit('alert', {'datatype':f'{messagesplit[0]}', 'data': f'{messagesplit[1]}'})
+    socketio.emit('alert', {'datatype':f'{messagesplit[0]}', 'data': f'{messagesplit[1]}'})
 
 @app.route('/')
 def home():
