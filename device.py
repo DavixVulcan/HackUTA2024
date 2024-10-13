@@ -89,3 +89,4 @@ def alert():
 
 if __name__ == "__main__":
     initialize_gpio()
+    pause()
