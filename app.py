@@ -1,20 +1,12 @@
 from flask import Flask, redirect, url_for, render_template, request, session
 from datetime import timedelta
 from flask_socketio import SocketIO, send
-import device
 import json
 
 app = Flask(__name__)
 
 # Initialize Flask-SocketIO
 socketio = SocketIO(app)
-
-def heartrate_mon():
-    while True:
-        if device.get_heartrate() > 100:
-            device.alert()
-            socketio.emit('alert', {'datatype': 'heartrate', 'data':str(device.get_heartrate())}, broadcast=True)
-        time.sleep(1)
 
 @socketio.on('message')
 def handle_message(message):
