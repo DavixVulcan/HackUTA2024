@@ -4,9 +4,7 @@ from flask_socketio import SocketIO, send
 import device
 import json
 
-app = Flask(__name__,
-    template_folder='BASE HTML'
-    )
+app = Flask(__name__)
 
 # Initialize Flask-SocketIO
 socketio = SocketIO(app)
@@ -27,7 +25,7 @@ def handle_message(message):
 @socketio.on('stream')
 def handle_stream(message):
     print(f"Received message: {message}")
-    socketio.emit('stream', json.loads(message))
+    socketio.emit('stream', message)
 
 @app.route('/')
 def home():
