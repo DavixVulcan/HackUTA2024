@@ -7,13 +7,15 @@ encoder = RotaryEncoder(a=17, b=18, max_steps=0)  # pin_a and pin_b are used
 # Optional: Set up the push button if your encoder has one
 button = Button(27)
 
+position = 0
+
 # Function to handle the rotary encoder's movement
 def rotary_moved():
-    if encoder.steps > 0:
+    if encoder.steps > position:
         print("Rotated Right (Clockwise)")
     else:
         print("Rotated Left (Counterclockwise)")
-    
+    position = encoder.steps
     print(f"Position: {encoder.steps}")
 
 # Function to handle button press
