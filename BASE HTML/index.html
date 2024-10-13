@@ -34,10 +34,12 @@
                 // Listen for messages from the server
                 socket.on('stream', function (data) {
                     console.log(data)
+                    var parsed_data = JSON.parse(data)
                     var messagesDiv = document.getElementById('messages');
                     // messagesDiv.innerHTML += '<p>' + data.datatype + ': ' + data.data + '</p>';
-                    document.getElementById("hr").value = data.Heartrate;
-                    document.getElementById("bp").value = data.Bloodpressure;
+                    document.getElementById("hr").value = parsed_data.Heartrate;
+                    document.getElementById("bp").value = parsed_data.Bloodpressure;
+                    document.getElementById("bol").value = parsed_data.Bloodoxygen;
                     
                 });
             </script>
@@ -343,7 +345,7 @@
                                                                         <input type="text" id="bol" name="bol" value="">
                                                                     </form>
                                                                     <script type="text/javascript">
-                                                                        document.getElementById("bol").value = get_bloodoxygen();
+                                                                        //document.getElementById("bol").value = get_bloodoxygen();
                                                                     </script>
                                                                     Hypoxemia: Low levels of oxygen in the blood.
 <!--                                                                    <b>
