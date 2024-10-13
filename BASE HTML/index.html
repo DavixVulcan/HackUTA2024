@@ -33,8 +33,12 @@
 
                 // Listen for messages from the server
                 socket.on('stream', function (data) {
+                    console.log(data)
                     var messagesDiv = document.getElementById('messages');
-                    messagesDiv.innerHTML += '<p>' + data.datatype + ': ' + data.data + '</p>';
+                    // messagesDiv.innerHTML += '<p>' + data.datatype + ': ' + data.data + '</p>';
+                    document.getElementById("hr").value = data.Heartrate;
+                    document.getElementById("bp").value = data.Bloodpressure;
+                    
                 });
             </script>
 
@@ -152,7 +156,7 @@
                                                     <input type="text" id="bpm" name="bpm" value="">
                                                 </form>
                                                 <script type="text/javascript">
-                                                    document.getElementById("bpm").value = get_heartrate();
+                                                    // document.getElementById("bpm").value = get_heartrate();
                                                 </script>
                                             </body>
                                             
@@ -166,7 +170,7 @@
 
                                     </div>
 
-                                    <img src="images/topics/Heart_BPM.png" class="custom-block-image img-fluid" alt="">
+                                    <img src="images/topics/Heart_BPM.png"class="fit" alt="">
                                 </a>
                             </div>
                         </div>
@@ -184,9 +188,6 @@
                                             <form>
                                                 <input type="text" id="hr" name="hr" value="">
                                             </form>
-                                            <script type="text/javascript">
-                                                document.getElementById("hr").value = get_heartrate();
-                                            </script>
                                             </p>
                                             
                                             <p class="text-white">
@@ -195,7 +196,7 @@
                                                 <input type="text" id="bp" name="bp" value="">
                                             </form>
                                             <script type="text/javascript">
-                                                document.getElementById("bp").value = get_bloodpressure();
+                                                // document.getElementById("bp").value = get_bloodpressure();
                                             </script>
                                             </p>
                                             
