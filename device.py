@@ -4,11 +4,20 @@ from time import sleep
 from signal import pause
 
 # Set up the rotary encoder
-encoder = RotaryEncoder(a=17, b=18, max_steps=0)  # pin_a and pin_b are used
+encoder = None  # pin_a and pin_b are used
 
 # Optional: Set up the push button if your encoder has one
-button = Button(27)
-buzzer = TonalBuzzer(15)
+button = None
+buzzer = None
+
+def initialize_gpio():
+    global encoder, button, buzzer
+    if encoder is None and button is None and buzzer is None:
+        encoder = RotaryEncoder(a=17, b=18, max_steps=0)
+        button = Button(27)
+        buzzer = TonalBuzzer(15)
+        encoder.when_rotated = rotary_moved
+        button.when_pressed = button_pressed
 
 position = 0
 

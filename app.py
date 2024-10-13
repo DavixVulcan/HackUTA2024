@@ -40,6 +40,7 @@ if __name__ == "__main__":
 
 @app.before_first_request
 def main_looper():
+    device.initialize_gpio()
     thread1 = Thread(target=heartrate_mon)
     thread1.start()
     thread2 = Thread(target=bloodpressure_mon)
