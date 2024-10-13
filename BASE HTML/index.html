@@ -34,7 +34,10 @@
                 // Listen for messages from the server
                 socket.on('stream', function (data) {
                     var messagesDiv = document.getElementById('messages');
-                    messagesDiv.innerHTML += '<p>' + data.datatype + ': ' + data.data + '</p>';
+                    // messagesDiv.innerHTML += '<p>' + data.datatype + ': ' + data.data + '</p>';
+                    document.getElementById("hr").value = data.Heartrate;
+                    document.getElementById("bp").value = data.Bloodpressure;
+                    
                 });
             </script>
 
@@ -184,9 +187,6 @@
                                             <form>
                                                 <input type="text" id="hr" name="hr" value="">
                                             </form>
-                                            <script type="text/javascript">
-                                                document.getElementById("hr").value = get_heartrate();
-                                            </script>
                                             </p>
                                             
                                             <p class="text-white">
