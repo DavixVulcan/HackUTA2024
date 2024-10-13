@@ -40,6 +40,7 @@ def rotary_moved():
 # Function to handle button press
 def button_pressed():
     print("Button pressed!")
+    global bloodtrue
     bloodtrue = not bloodtrue
 
 # Assign event handlers for movement and button press
