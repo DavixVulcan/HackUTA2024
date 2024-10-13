@@ -1,6 +1,6 @@
 from gpiozero import Servo, RGBLED
 from time import sleep
-
+from signal import pause
 import socketio
 
 alert_shot = False
