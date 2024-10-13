@@ -76,5 +76,3 @@ def alert():
         sleep(0.05)  # Hold the note for half a second
         buzzer.stop()
         sleep(0.01) 
-# Keep the program running
-pause()
